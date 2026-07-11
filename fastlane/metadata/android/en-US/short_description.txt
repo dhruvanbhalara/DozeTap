@@ -1,0 +1,1 @@
+Privacy-focused, zero-network Android app for managing screen off timeouts via Quick Settings tile and dynamic Bento widgets.

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App / Shared -->
+    <string name="app_name">DozeTap</string>
+    <string name="tile_label">टाइमआउट</string>
+    <string name="btn_got_it">समझ गया</string>
+    <string name="btn_close">बंद करें</string>
+    <string name="btn_next">अगला</string>
+    <string name="btn_skip">छोड़ें</string>
+    <string name="btn_get_started">शुरू करें</string>
+
+    <!-- Timeout Labels -->
+    <string name="timeout_never_short">कभी नहीं</string>
+    <string name="timeout_seconds_short">%1$dसेकंड</string>
+    <string name="timeout_minutes_short">%1$dमिनट</string>
+    <string name="timeout_hours_short">%1$dघंटा</string>
+    <string name="timeout_never_display">कभी नहीं (24 घंटे)</string>
+    <string name="timeout_label_header">टाइमआउट</string>
+
+    <!-- Navigation Bar -->
+    <string name="nav_dashboard">डैशबोर्ड</string>
+    <string name="nav_widgets">विजेट</string>
+    <string name="nav_tiles">टाइल</string>
+    <string name="nav_settings">सेटिंग</string>
+
+    <!-- HomeScreen -->
+    <string name="home_title">DozeTap</string>
+    <string name="home_current_timeout_label">वर्तमान स्क्रीन टाइमआउट</string>
+    <string name="home_status_awake">जागरूक</string>
+    <string name="home_status_timeout">टाइमआउट</string>
+    <string name="home_btn_keep_awake">स्क्रीन जगाए रखें</string>
+    <string name="home_btn_disable_keep_awake">जगाए रखना बंद करें</string>
+    <string name="home_section_quick_presets">त्वरित प्रीसेट</string>
+    <string name="home_toast_widget_hint">DozeTap विजेट जोड़ने के लिए होम स्क्रीन पर देर तक दबाएं</string>
+    <string name="home_dialog_add_tile_title">Quick Settings टाइल जोड़ें</string>
+    <string name="home_dialog_add_tile_body">ऊपर से दो बार नीचे स्वाइप करें → संपादन (पेंसिल) पर टैप करें → \'DozeTap Timeout\' को सक्रिय टाइल में खींचें।</string>
+
+    <!-- SettingsScreen -->
+    <string name="settings_title">सेटिंग</string>
+    <string name="settings_section_general">सामान्य</string>
+    <string name="settings_item_default_timeout">डिफ़ॉल्ट टाइमआउट</string>
+    <string name="settings_section_language">भाषा</string>
+    <string name="settings_item_language">ऐप भाषा</string>
+    <string name="settings_item_language_sub">प्रदर्शन भाषा चुनें</string>
+    <string name="settings_dialog_select_language">भाषा चुनें</string>
+    <string name="lang_english">English</string>
+    <string name="lang_hindi">हिन्दी (Hindi)</string>
+    <string name="settings_section_appearance">दिखावट</string>
+    <string name="settings_item_dynamic_color">डायनामिक रंग</string>
+    <string name="settings_item_dynamic_color_sub">सिस्टम वॉलपेपर रंगों का उपयोग करें (Android 12+)</string>
+    <string name="settings_item_dark_mode">डार्क मोड</string>
+    <string name="settings_theme_follow_system">सिस्टम अनुसार</string>
+    <string name="settings_theme_light">लाइट थीम</string>
+    <string name="settings_theme_dark">डार्क थीम</string>
+    <string name="settings_theme_amoled">शुद्ध AMOLED काला</string>
+    <string name="settings_section_system_about">सिस्टम और जानकारी</string>
+    <string name="settings_item_battery_opt">बैटरी ऑप्टिमाइज़ेशन</string>
+    <string name="settings_item_battery_opt_sub">बैकग्राउंड टाइल सेवा की विश्वसनीयता सुनिश्चित करें</string>
+    <string name="settings_item_shizuku">Shizuku अनुमति एकीकरण</string>
+    <string name="settings_item_shizuku_sub">बिना PC के Write Settings अनुमति दें (वायरलेस डीबगिंग)</string>
+    <string name="settings_item_privacy">गोपनीयता नीति</string>
+    <string name="settings_item_privacy_sub">डेटा और अनुमति प्रकटीकरण</string>
+    <string name="settings_item_about">%1$s के बारे में</string>
+    <string name="settings_item_about_sub">संस्करण %1$s • 100%% ओपन सोर्स &amp; निजी</string>
+    <string name="settings_item_feedback">फ़ीडबैक और सहायता</string>
+    <string name="settings_item_feedback_sub">फ़ीडबैक या समस्या रिपोर्ट भेजें</string>
+    <string name="settings_dialog_select_timeout">डिफ़ॉल्ट टाइमआउट चुनें</string>
+    <string name="settings_dialog_select_theme">थीम मोड चुनें</string>
+    <string name="settings_dialog_shizuku_title">Shizuku एकीकरण</string>
+    <string name="settings_dialog_shizuku_body">Shizuku DozeTap को एक टैप में Write System Settings अनुमति देने की सुविधा देता है, जिससे मैन्युअल सिस्टम सेटिंग टॉगल की आवश्यकता नहीं होती।</string>
+    <string name="settings_dialog_shizuku_setup">Shizuku सेट करने का तरीका:\n1. Shizuku को GitHub या Google Play Store से इंस्टॉल करें।\n2. Developer Options में Wireless Debugging सक्षम करें (Android 11+)।\n3. Shizuku सेवा को पेयर करें और शुरू करें।\n4. DozeTap खोलें और \'Grant via Shizuku\' पर टैप करें।</string>
+
+    <!-- OnboardingScreen -->
+    <string name="onboarding_page1_title">DozeTap में आपका स्वागत है</string>
+    <string name="onboarding_page1_subtitle">एक टैप से आसानी से स्क्रीन टाइमआउट बदलें और बढ़ाएं।</string>
+    <string name="onboarding_page2_title">Quick Settings टाइल</string>
+    <string name="onboarding_page2_subtitle">Android Quick Settings पैनल से सीधे टाइमआउट सेटिंग एक्सेस करें।</string>
+    <string name="onboarding_page3_title">डायनामिक विजेट</string>
+    <string name="onboarding_page3_subtitle">Material You विजेट से सीधे होम स्क्रीन से स्क्रीन टाइमआउट प्रीसेट नियंत्रित करें।</string>
+
+    <!-- TilesScreen -->
+    <string name="tiles_title">टाइल</string>
+    <string name="tiles_qs_preview_label">Quick Settings शेड पूर्वावलोकन</string>
+    <string name="tiles_qs_internet">इंटरनेट</string>
+    <string name="tiles_qs_bluetooth">ब्लूटूथ</string>
+    <string name="tiles_qs_flashlight">फ्लैशलाइट</string>
+    <string name="tiles_qs_on">चालू</string>
+    <string name="tiles_qs_off">बंद</string>
+    <string name="tiles_qs_active">सक्रिय</string>
+    <string name="tiles_qs_active_minutes">%1$s मिनट सक्रिय</string>
+    <string name="tiles_cycle_order_title">क्रम</string>
+    <string name="tiles_cycle_order_sub">15s → 30s → 1m → 5m → 10m → कभी नहीं</string>
+    <string name="tiles_show_labels_title">टेक्स्ट लेबल दिखाएं</string>
+    <string name="tiles_show_labels_sub">टाइल आइकन के नीचे प्रीसेट नाम प्रदर्शित करें</string>
+    <string name="tiles_vibrate_title">बदलाव पर कंपन</string>
+    <string name="tiles_vibrate_sub">टाइल स्थिति अपडेट होने पर हैप्टिक फीडबैक</string>
+    <string name="tiles_btn_add_tile">Quick Settings टाइल जोड़ें</string>
+
+    <!-- WidgetsScreen -->
+    <string name="widgets_title">विजेट</string>
+    <string name="widgets_small_title">छोटा (1x1)</string>
+    <string name="widgets_small_sub">कॉम्पैक्ट सिंगल-टैप साइकिल टाइमर</string>
+    <string name="widgets_medium_title">मध्यम (2x1)</string>
+    <string name="widgets_medium_sub">सक्रिय टाइमआउट लेबल + साइकिल एक्शन बटन</string>
+    <string name="widgets_large_title">बड़ा (4x1)</string>
+    <string name="widgets_large_sub">त्वरित प्रीसेट बटन पट्टी</string>
+    <string name="widgets_xlarge_title">अतिरिक्त बड़ा (4x4)</string>
+    <string name="widgets_xlarge_sub">पूर्ण 8-प्रीसेट ग्रिड</string>
+    <string name="widgets_how_to_add_title">विजेट कैसे जोड़ें</string>
+    <string name="widgets_step_1">Android होम स्क्रीन पर खाली जगह पर देर तक दबाएं।</string>
+    <string name="widgets_step_2">दिखाई देने वाले मेनू से विजेट पर टैप करें।</string>
+    <string name="widgets_step_3">DozeTap खोजने के लिए स्क्रॉल करें।</string>
+    <string name="widgets_step_4">जो विजेट आकार चाहें उसे दबाकर रखें, फिर अपनी स्क्रीन पर खींचें।</string>
+
+    <!-- PermissionBanner -->
+    <string name="permission_title">अनुमति आवश्यक है</string>
+    <string name="permission_shizuku_active">Shizuku सक्रिय</string>
+    <string name="permission_body">DozeTap को सिस्टम स्क्रीन टाइमआउट बदलने के लिए Write Settings अनुमति चाहिए।</string>
+    <string name="permission_btn_shizuku">Shizuku से अनुमति दें (एक टैप)</string>
+    <string name="permission_btn_system_settings">सिस्टम सेटिंग खोलें</string>
+
+    <!-- RecentTimeoutsSection -->
+    <string name="recent_timeouts_title">हालिया टाइमआउट</string>
+
+    <!-- Glance Widget -->
+    <string name="glance_app_name">DozeTap</string>
+    <string name="glance_timeout_label">टाइमआउट</string>
+</resources>

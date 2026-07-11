@@ -1,0 +1,33 @@
+# Fastfile configuration for DozeTap Automated CD Pipeline
+default_platform(:android)
+
+platform :android do
+  desc "Runs unit tests and static lint checks"
+  lane :test do
+    gradle(task: "testProdReleaseUnitTest")
+  end
+
+  desc "Builds signed Production Release APK"
+  lane :build_release do
+    gradle(task: "assembleProdRelease")
+  end
+
+  desc "Deploy to Google Play Internal Track"
+  lane :deploy_internal do
+    build_release
+    upload_to_play_store(
+      track: 'internal',
+      apk: 'app/build/outputs/apk/prod/release/app-prod-release.apk'
+    )
+  end
+
+  desc "Deploy to Google Play Production Staged Rollout"
+  lane :deploy_production do
+    build_release
+    upload_to_play_store(
+      track: 'production',
+      rollout: '0.1',
+      apk: 'app/build/outputs/apk/prod/release/app-prod-release.apk'
+    )
+  end
+end

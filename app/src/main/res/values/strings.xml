@@ -1,0 +1,133 @@
+<resources>
+    <!-- App / Shared -->
+    <string name="app_name">DozeTap</string>
+    <string name="tile_label">Timeout</string>
+    <string name="btn_got_it">Got It</string>
+    <string name="btn_close">Close</string>
+    <string name="btn_next">Next</string>
+    <string name="btn_skip">Skip</string>
+    <string name="btn_get_started">Get Started</string>
+
+    <!-- Timeout Labels -->
+    <string name="timeout_never_short">Never</string>
+    <string name="timeout_seconds_short">%1$ds</string>
+    <string name="timeout_minutes_short">%1$dm</string>
+    <string name="timeout_hours_short">%1$dh</string>
+    <string name="timeout_never_display">Never (24 Hours)</string>
+    <string name="timeout_label_header">Timeout</string>
+
+    <!-- Navigation Bar -->
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_widgets">Widgets</string>
+    <string name="nav_tiles">Tiles</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- HomeScreen -->
+    <string name="home_title">DozeTap</string>
+    <string name="home_current_timeout_label">Current Screen Timeout</string>
+    <string name="home_status_awake">Awake</string>
+    <string name="home_status_timeout">Timeout</string>
+    <string name="home_btn_keep_awake">Keep Awake</string>
+    <string name="home_btn_disable_keep_awake">Disable Keep Awake</string>
+    <string name="home_section_quick_presets">Quick Presets</string>
+    <string name="home_quick_setup_title">Quick Access Setup</string>
+    <string name="home_btn_add_qs_tile">Add QS Tile</string>
+    <string name="home_btn_add_widget">Add Widget</string>
+    <string name="home_toast_widget_hint">Long press home screen to add DozeTap widget</string>
+    <string name="home_dialog_add_tile_title">Add Quick Settings Tile</string>
+    <string name="home_dialog_add_tile_body">Swipe down twice from top of screen → Tap Edit (Pencil) → Drag \'DozeTap Timeout\' to active tiles.</string>
+
+    <!-- SettingsScreen -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_section_general">General</string>
+    <string name="settings_section_tile">Quick Settings Tile</string>
+    <string name="settings_item_default_timeout">Default Timeout</string>
+    <string name="settings_section_language">Language</string>
+    <string name="settings_item_language">App Language</string>
+    <string name="settings_item_language_sub">Choose display language</string>
+    <string name="settings_dialog_select_language">Select Language</string>
+    <string name="lang_english">English</string>
+    <string name="lang_hindi">हिन्दी (Hindi)</string>
+    <string name="settings_section_appearance">Appearance</string>
+    <string name="settings_item_dynamic_color">Dynamic Color</string>
+    <string name="settings_item_dynamic_color_sub">Use system wallpaper accent colors (Android 12+)</string>
+    <string name="settings_item_dark_mode">Dark Mode</string>
+    <string name="settings_theme_follow_system">Follow System</string>
+    <string name="settings_theme_light">Light Theme</string>
+    <string name="settings_theme_dark">Dark Theme</string>
+    <string name="settings_theme_amoled">Pure AMOLED Black</string>
+    <string name="settings_section_system_about">System &amp; About</string>
+    <string name="settings_item_battery_opt">Battery Optimization</string>
+    <string name="settings_item_battery_opt_sub">Ensure background tile service reliability</string>
+    <string name="settings_item_shizuku">Shizuku Permission Integration</string>
+    <string name="settings_item_shizuku_sub">Grant Write Settings permission without PC (Wireless Debugging)</string>
+    <string name="settings_item_privacy">Privacy Policy</string>
+    <string name="settings_item_privacy_sub">Data &amp; permission disclosures</string>
+    <string name="settings_item_about">About %1$s</string>
+    <string name="settings_item_about_sub">Version %1$s • 100%% Open Source &amp; Private</string>
+    <string name="settings_item_feedback">Feedback &amp; Support</string>
+    <string name="settings_item_feedback_sub">Send feedback or issue report</string>
+    <string name="settings_item_github">GitHub Repository</string>
+    <string name="settings_item_github_sub">View source code, report issues, or contribute</string>
+    <string name="settings_dialog_select_timeout">Select Default Timeout</string>
+    <string name="settings_dialog_select_theme">Select Theme Mode</string>
+    <string name="settings_dialog_shizuku_title">Shizuku Integration</string>
+    <string name="settings_dialog_shizuku_body">Shizuku allows DozeTap to grant the Write System Settings permission with a single tap, bypassing manual system settings toggling.</string>
+    <string name="settings_dialog_shizuku_setup">How to set up Shizuku:\n1. Install Shizuku from GitHub or Google Play Store.\n2. Enable Wireless Debugging in Developer Options (Android 11+).\n3. Pair &amp; start Shizuku service.\n4. Open DozeTap and tap \'Grant via Shizuku\'.</string>
+
+    <!-- OnboardingScreen -->
+    <string name="onboarding_page1_title">Welcome to DozeTap</string>
+    <string name="onboarding_page1_subtitle">Effortlessly toggle and extend your screen timeout with a single tap.</string>
+    <string name="onboarding_page2_title">Quick Settings Tile</string>
+    <string name="onboarding_page2_subtitle">Access timeout settings directly from your Android Quick Settings panel.</string>
+    <string name="onboarding_page3_title">Dynamic Widgets</string>
+    <string name="onboarding_page3_subtitle">Control screen timeout presets directly from your home screen with Material You widgets.</string>
+
+    <!-- TilesScreen -->
+    <string name="tiles_title">Tiles</string>
+    <string name="tiles_qs_preview_label">Quick Settings Shade Preview</string>
+    <string name="tiles_qs_internet">Internet</string>
+    <string name="tiles_qs_bluetooth">Bluetooth</string>
+    <string name="tiles_qs_flashlight">Flashlight</string>
+    <string name="tiles_qs_on">On</string>
+    <string name="tiles_qs_off">Off</string>
+    <string name="tiles_qs_active">Active</string>
+    <string name="tiles_qs_active_minutes">%1$s Minutes Active</string>
+    <string name="tiles_cycle_order_title">Cycle order</string>
+    <string name="tiles_cycle_order_sub">15s → 30s → 1m → 5m → 10m → Never</string>
+    <string name="tiles_show_labels_title">Show text labels</string>
+    <string name="tiles_show_labels_sub">Display preset name under the tile icon</string>
+    <string name="tiles_vibrate_title">Vibrate on change</string>
+    <string name="tiles_vibrate_sub">Haptic feedback when tile state updates</string>
+    <string name="tiles_btn_add_tile">Add Quick Settings Tile</string>
+
+    <!-- WidgetsScreen -->
+    <string name="widgets_title">Widgets</string>
+    <string name="widgets_small_title">Small (1x1)</string>
+    <string name="widgets_small_sub">Compact single-tap cycle timer</string>
+    <string name="widgets_medium_title">Medium (2x1)</string>
+    <string name="widgets_medium_sub">Active timeout label + cycle action button</string>
+    <string name="widgets_large_title">Large (4x1)</string>
+    <string name="widgets_large_sub">Quick preset buttons strip</string>
+    <string name="widgets_xlarge_title">Extra Large (4x4)</string>
+    <string name="widgets_xlarge_sub">Full 8-preset grid</string>
+    <string name="widgets_how_to_add_title">How to add a widget</string>
+    <string name="widgets_step_1">Long-press an empty space on your Android home screen.</string>
+    <string name="widgets_step_2">Tap Widgets from the menu that appears.</string>
+    <string name="widgets_step_3">Scroll down to find DozeTap.</string>
+    <string name="widgets_step_4">Touch and hold the widget size you want, then drag it to your screen.</string>
+
+    <!-- PermissionBanner -->
+    <string name="permission_title">Permission Required</string>
+    <string name="permission_shizuku_active">Shizuku Active</string>
+    <string name="permission_body">DozeTap needs Write Settings permission to change system screen timeout.</string>
+    <string name="permission_btn_shizuku">Grant via Shizuku (One-Tap)</string>
+    <string name="permission_btn_system_settings">Open System Settings</string>
+
+    <!-- RecentTimeoutsSection -->
+    <string name="recent_timeouts_title">Recent Timeouts</string>
+
+    <!-- Glance Widget -->
+    <string name="glance_app_name">DozeTap</string>
+    <string name="glance_timeout_label">Timeout</string>
+</resources>

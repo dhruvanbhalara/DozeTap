@@ -1,0 +1,5 @@
+Initial open-source release of DozeTap (v1.0.0)!
+• Screen timeout control via Quick Settings Tile.
+• Material You Bento dynamic widgets.
+• One-tap Shizuku permission grant integration.
+• Support for custom preset timeouts and 100% offline privacy.

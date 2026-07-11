@@ -1,0 +1,8 @@
+DozeTap is a privacy-focused, zero-network Android application designed to give you instant, hassle-free control over your device's screen-off timeout (`Settings.System.SCREEN_OFF_TIMEOUT`).
+
+### Key Features:
+- **Quick Settings Tile**: Cycle through screen timeout presets (15s, 30s, 1m, 5m, 10m, Never) directly from your Android notification shade.
+- **Home Screen Widgets**: Jetpack Glance Bento widgets offering quick preset buttons and current status displays.
+- **Shizuku Integration**: Effortlessly grant the `WRITE_SETTINGS` permission without requiring a PC or manual ADB commands.
+- **Material You Dynamic UI**: Beautiful Material 3 dashboard with dark mode, customizable presets, and smooth animations.
+- **Zero Network & 100% Private**: Zero internet permissions, no telemetry, no tracking, zero third-party ads or analytics.

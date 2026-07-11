@@ -1,0 +1,55 @@
+# Built-in file ignores for Android Studio / Gradle / Kotlin project
+
+# Gradle files & local caches
+.gradle/
+.gradle_home/
+.gradle_user_home/
+build/
+app/build/
+.kotlin/
+.artifacts/
+.kiro/
+
+# Local configuration & secrets
+local.properties
+keystore.properties
+google-services.json
+GoogleService-Info.plist
+*.keystore
+*.jks
+*.p12
+*.key
+*.pem
+
+# Android Build Outputs & Packages
+*.apk
+*.ap_
+*.aab
+*.dex
+*.class
+
+# Log files & Profiler Captures
+*.log
+captures/
+
+# Android Studio / IntelliJ IDEA
+.idea/*
+!.idea/runConfigurations/
+*.iml
+.navigation/
+workspace.xml
+tasks.xml
+shelf/
+assetTagging.xml
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# NDK / C++ build outputs (if added in future)
+.cxx/
+.externalNativeBuild/

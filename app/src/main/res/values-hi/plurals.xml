@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plurals-resource xmlns:android="http://schemas.android.com/apk/res/android">
+    <plurals name="timeout_seconds_display">
+        <item quantity="one">%d सेकंड</item>
+        <item quantity="other">%d सेकंड</item>
+    </plurals>
+    <plurals name="timeout_minutes_display">
+        <item quantity="one">%d मिनट</item>
+        <item quantity="other">%d मिनट</item>
+    </plurals>
+    <plurals name="timeout_hours_display">
+        <item quantity="one">%d घंटा</item>
+        <item quantity="other">%d घंटे</item>
+    </plurals>
+</plurals-resource>
