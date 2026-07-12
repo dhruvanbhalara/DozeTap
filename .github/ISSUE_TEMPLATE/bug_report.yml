@@ -1,0 +1,81 @@
+name: Bug Report
+description: Create a report to help us reproduce and fix a bug in DozeTap
+title: "[BUG]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to report an issue! DozeTap is 100% open-source and privacy-focused.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is.
+      placeholder: Describe what happened...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: app-flavor-version
+    attributes:
+      label: App Flavor & Version
+      description: Which build flavor and version are you running?
+      options:
+        - DozeTap Production (v1.0.0)
+        - DozeTap Dev (.dev build)
+        - F-Droid build
+        - Custom / Self-compiled build
+    validations:
+      required: true
+
+  - type: input
+    id: android-version
+    attributes:
+      label: Android OS Version & Device Model
+      description: e.g., Android 14 (API 34) on Pixel 8
+      placeholder: e.g., Android 13, Samsung Galaxy S22
+    validations:
+      required: true
+
+  - type: dropdown
+    id: permission-method
+    attributes:
+      label: Write Settings Permission Integration
+      description: How was the WRITE_SETTINGS permission granted?
+      options:
+        - Shizuku (Wireless Debugging)
+        - ADB Command (adb shell pm grant ...)
+        - System Settings manual toggle
+        - Permission not granted / Unknown
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: Steps to Reproduce
+      description: Explain step-by-step how to trigger the issue.
+      placeholder: |
+        1. Open DozeTap app
+        2. Tap on 5m timeout chip
+        3. Pull down Quick Settings shade
+        4. Observe timeout tile status
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs-screenshots
+    attributes:
+      label: Logcat / Screenshots
+      description: Paste relevant Logcat logs or attach screenshots if applicable.
+      placeholder: Paste error logs or stack trace here...
