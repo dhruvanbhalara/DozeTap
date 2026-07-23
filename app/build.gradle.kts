@@ -7,13 +7,32 @@ if (keystorePropertiesFile.exists()) {
     keystorePropertiesFile.inputStream().use { keystoreProperties.load(it) }
 }
 
-fun getKeystoreProperty(vararg keys: String): String? {
+fun getKeystoreProperty(flavor: String? = null, vararg keys: String): String? {
+    val flavorPrefix = flavor?.uppercase()?.let { "${it}_" } ?: ""
     for (key in keys) {
+        val flavorKey = "$flavorPrefix$key"
+        
+        // Try flavor-specific environment variable then property
+        val envValFlavor = System.getenv(flavorKey)
+        if (!envValFlavor.isNullOrBlank()) return envValFlavor
+        val propValFlavor = keystoreProperties.getProperty(flavorKey)
+        if (!propValFlavor.isNullOrBlank()) return propValFlavor
+
+        // Try general environment variable then property
         val envVal = System.getenv(key)
         if (!envVal.isNullOrBlank()) return envVal
         val propVal = keystoreProperties.getProperty(key)
         if (!propVal.isNullOrBlank()) return propVal
     }
+    return null
+}
+
+fun resolveKeystoreFile(path: String?): File? {
+    if (path == null) return null
+    val f = file(path)
+    if (f.exists()) return f
+    val rootF = rootProject.file(path)
+    if (rootF.exists()) return rootF
     return null
 }
 
@@ -42,38 +61,58 @@ android {
         }
     }
 
+    signingConfigs {
+        getByName("debug") {
+            val debugFile = resolveKeystoreFile(getKeystoreProperty(null, "DEBUG_KEYSTORE_FILE", "KEYSTORE_FILE_DEBUG"))
+            if (debugFile != null) {
+                storeFile = debugFile
+                storePassword = getKeystoreProperty(null, "DEBUG_KEYSTORE_PASSWORD", "KEYSTORE_PASSWORD_DEBUG") ?: "android"
+                keyAlias = getKeystoreProperty(null, "DEBUG_KEY_ALIAS", "KEY_ALIAS_DEBUG") ?: "androiddebugkey"
+                keyPassword = getKeystoreProperty(null, "DEBUG_KEY_PASSWORD", "KEY_PASSWORD_DEBUG") ?: "android"
+            }
+        }
+
+        create("prodRelease") {
+            val releaseFile = resolveKeystoreFile(getKeystoreProperty("prod", "RELEASE_KEYSTORE_FILE", "KEYSTORE_FILE", "SIGNING_KEY_FILE"))
+            if (releaseFile != null) {
+                storeFile = releaseFile
+                storePassword = getKeystoreProperty("prod", "RELEASE_KEYSTORE_PASSWORD", "KEYSTORE_PASSWORD")
+                keyAlias = getKeystoreProperty("prod", "RELEASE_KEY_ALIAS", "KEY_ALIAS")
+                keyPassword = getKeystoreProperty("prod", "RELEASE_KEY_PASSWORD", "KEY_PASSWORD")
+            }
+        }
+
+        create("devRelease") {
+            val releaseFile = resolveKeystoreFile(getKeystoreProperty("dev", "RELEASE_KEYSTORE_FILE", "KEYSTORE_FILE", "SIGNING_KEY_FILE"))
+            if (releaseFile != null) {
+                storeFile = releaseFile
+                storePassword = getKeystoreProperty("dev", "RELEASE_KEYSTORE_PASSWORD", "KEYSTORE_PASSWORD")
+                keyAlias = getKeystoreProperty("dev", "RELEASE_KEY_ALIAS", "KEY_ALIAS")
+                keyPassword = getKeystoreProperty("dev", "RELEASE_KEY_PASSWORD", "KEY_PASSWORD")
+            }
+        }
+    }
+
     flavorDimensions += "version"
     productFlavors {
         create("prod") {
             dimension = "version"
             manifestPlaceholders["appName"] = "DozeTap"
+            signingConfigs.findByName("prodRelease")?.let { config ->
+                if (config.storeFile?.exists() == true) {
+                    signingConfig = config
+                }
+            }
         }
         create("dev") {
             dimension = "version"
             applicationIdSuffix = ".dev"
             versionNameSuffix = "-dev"
             manifestPlaceholders["appName"] = "DozeTap Dev"
-        }
-    }
-
-    signingConfigs {
-        getByName("debug") {
-            val debugFile = getKeystoreProperty("DEBUG_KEYSTORE_FILE", "KEYSTORE_FILE_DEBUG")
-            if (debugFile != null && file(debugFile).exists()) {
-                storeFile = file(debugFile)
-                storePassword = getKeystoreProperty("DEBUG_KEYSTORE_PASSWORD", "KEYSTORE_PASSWORD_DEBUG") ?: "android"
-                keyAlias = getKeystoreProperty("DEBUG_KEY_ALIAS", "KEY_ALIAS_DEBUG") ?: "androiddebugkey"
-                keyPassword = getKeystoreProperty("DEBUG_KEY_PASSWORD", "KEY_PASSWORD_DEBUG") ?: "android"
-            }
-        }
-
-        create("release") {
-            val releaseFile = getKeystoreProperty("RELEASE_KEYSTORE_FILE", "KEYSTORE_FILE", "SIGNING_KEY_FILE")
-            if (releaseFile != null && file(releaseFile).exists()) {
-                storeFile = file(releaseFile)
-                storePassword = getKeystoreProperty("RELEASE_KEYSTORE_PASSWORD", "KEYSTORE_PASSWORD")
-                keyAlias = getKeystoreProperty("RELEASE_KEY_ALIAS", "KEY_ALIAS")
-                keyPassword = getKeystoreProperty("RELEASE_KEY_PASSWORD", "KEY_PASSWORD")
+            signingConfigs.findByName("devRelease")?.let { config ->
+                if (config.storeFile?.exists() == true) {
+                    signingConfig = config
+                }
             }
         }
     }
@@ -89,13 +128,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            val releaseConfig = signingConfigs.findByName("release")
-            if (releaseConfig?.storeFile != null && releaseConfig.storeFile!!.exists()) {
-                signingConfig = releaseConfig
-            } else {
-                // Explicitly avoid silent debug key signing for release builds
-                signingConfig = null
-            }
+            signingConfig = null // Inherit from flavor
         }
     }
     compileOptions {

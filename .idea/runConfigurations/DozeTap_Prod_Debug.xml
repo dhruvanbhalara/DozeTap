@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="DozeTap Prod" type="AndroidRunConfigurationType" factoryName="Android App">
+  <configuration default="false" name="DozeTap Prod Debug" type="AndroidRunConfigurationType" factoryName="Android App">
     <module name="DozeTap.app" />
     <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
     <option name="DEPLOY" value="true" />

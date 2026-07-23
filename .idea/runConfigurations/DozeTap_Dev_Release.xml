@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="DozeTap Dev" type="AndroidRunConfigurationType" factoryName="Android App">
+  <configuration default="false" name="DozeTap Dev Release" type="AndroidRunConfigurationType" factoryName="Android App">
     <module name="DozeTap.app" />
     <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
     <option name="DEPLOY" value="true" />
@@ -62,7 +62,7 @@
     <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
     <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
     <method v="2">
-      <option name="Android.Gradle.BeforeRunTask" enabled="true" goal=":app:assembleDevDebug" />
+      <option name="Android.Gradle.BeforeRunTask" enabled="true" goal=":app:assembleDevRelease" />
     </method>
   </configuration>
 </component>
