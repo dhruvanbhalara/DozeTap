@@ -1,0 +1,123 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  fdroid-check:
+    name: Verify F-Droid Source Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Gradle Cache
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Make Gradle Wrapper Executable
+        run: chmod +x gradlew
+
+      - name: Build Production Unsigned Release APK
+        run: ./gradlew assembleProdRelease --no-daemon
+
+      - name: Verify Output APK Generated
+        run: |
+          APK_PATH=$(find app/build/outputs/apk/prod/release/ -name "*.apk" | head -n 1)
+          if [ -f "$APK_PATH" ]; then
+            echo "F-Droid release build check passed: $APK_PATH"
+          else
+            echo "Error: No APK generated for prodRelease build."
+            exit 1
+          fi
+
+  publish-release:
+    name: Build, Sign & Publish Release APK
+    needs: fdroid-check
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Gradle Cache
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Make Gradle Wrapper Executable
+        run: chmod +x gradlew
+
+      - name: Run Unit Tests (Prod Release)
+        run: ./gradlew testProdReleaseUnitTest --no-daemon
+
+      - name: Decode Android Release Keystore
+        env:
+          SIGNING_KEY_BASE64: ${{ secrets.SIGNING_KEY_BASE64 }}
+        if: ${{ env.SIGNING_KEY_BASE64 != '' }}
+        run: |
+          mkdir -p ${{ runner.temp }}/keystore
+          echo "$SIGNING_KEY_BASE64" | base64 -d > ${{ runner.temp }}/keystore/release.keystore
+
+      - name: Build Signed Production APK
+        env:
+          PROD_RELEASE_KEYSTORE_FILE: ${{ runner.temp }}/keystore/release.keystore
+          PROD_RELEASE_KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          PROD_RELEASE_KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          PROD_RELEASE_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: ./gradlew assembleProdRelease --no-daemon
+
+      - name: Prepare Release APK
+        run: |
+          mkdir -p release_artifact
+          TAG_NAME="${GITHUB_REF_NAME}"
+          APK_PATH=$(find app/build/outputs/apk/prod/release/ -name "*.apk" | head -n 1)
+          
+          if [ -f "$APK_PATH" ]; then
+            cp "$APK_PATH" "release_artifact/DozeTap-${TAG_NAME}.apk"
+          else
+            echo "Error: Release APK not found at app/build/outputs/apk/prod/release/"
+            exit 1
+          fi
+
+      - name: Extract Release Notes from CHANGELOG
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          python3 -c "
+          import re, os
+          version = '${VERSION}'
+          if os.path.exists('CHANGELOG.md'):
+              with open('CHANGELOG.md') as f:
+                  content = f.read()
+              pattern = rf'## \[{re.escape(version)}\][^\n]*\n(.*?)(?=\n## \[|\Z)'
+              match = re.search(pattern, content, re.DOTALL)
+              notes = match.group(1).strip() if match else ''
+              with open('release_notes.md', 'w') as f:
+                  f.write(notes)
+          "
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release_artifact/DozeTap-*.apk
+          body_path: release_notes.md
+          generate_release_notes: true
+          draft: false
+          prerelease: false
