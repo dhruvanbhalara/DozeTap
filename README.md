@@ -69,13 +69,32 @@ adb shell pm grant com.dhruvanbhalara.dozetap android.permission.WRITE_SETTINGS
 - JDK 17+
 - Android SDK (API Level 35 compileSdk, API Level 26 minSdk)
 
-### Build Debug APK
+### Build APK Variants
+
+This project uses product flavors to separate development and production builds.
 
 ```bash
 git clone https://github.com/dhruvanbhalara/DozeTap.git
 cd DozeTap
-./gradlew assembleDebug
-adb install app/build/outputs/apk/debug/app-debug.apk
+
+# Build Dev Debug (Development variant)
+./gradlew assembleDevDebug
+
+# Build Prod Release (Production variant)
+./gradlew assembleProdRelease
+
+# Build All Variants
+./gradlew assemble
+```
+
+### Installation
+
+```bash
+# Install Dev Debug
+adb install app/build/outputs/apk/dev/debug/app-dev-debug.apk
+
+# Install Prod Release
+adb install app/build/outputs/apk/prod/release/app-prod-release.apk
 ```
 
 ### Run Unit Tests
